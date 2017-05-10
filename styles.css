@@ -1,0 +1,28 @@
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+    height:595px;
+}
+
+header {
+    padding: 10px;
+    color: black;
+    border: 1px solid gray;
+    clear: left;
+    text-align: center;
+}
+
+nav {
+    float: left;
+    padding:9.5px;
+    margin: 0;
+    border: 4px solid gray;
+}
+
+
+article {
+    margin-left: 304px;
+    border-left: 1px solid gray;
+    padding: 1em;
+
+}
