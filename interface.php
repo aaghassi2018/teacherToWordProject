@@ -26,7 +26,7 @@
       </fieldset>
     </form>
     <br>
-    <form action="JavaScript:function()" method="get" style="width:280px;" name="lookupWord">
+    <form action="JavaScript:lookupWord()" method="get" style="width:280px;" name="lookupWord">
       <fieldset>
         <legend><span style="font-weight:bold;">Lookup Word</span></legend>
         Word:<br>
@@ -78,10 +78,14 @@ function lookupTeacher() {
   httpGetAsync(yo, processPage);
 
 }
+function lookupWord() {
+	//alert("about to request page");
+  var bruh = "http://localhost/teacherToWordProject/lookupWord.php?word=";
+  var bro = document.lookupWord['word'].value;
+  var yo = bruh.concat(bro);
+  httpGetAsync(yo, processPage);
 
-
-
-
+}
 
 //starts a request and then runs the callback method when it is loaded
 function httpGetAsync(theUrl, callbackWhenPageLoaded)
