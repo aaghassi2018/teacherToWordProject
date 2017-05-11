@@ -40,6 +40,7 @@ try {
     }
 catch(PDOException $e)
     {
-    echo "Connection failed: " . $e->getMessage();
+    //echo "Connection failed: " . $e->getMessage();
+    //echo "That word is not in our database.";
     }
 ?>

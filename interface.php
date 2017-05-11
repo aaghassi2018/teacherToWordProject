@@ -13,7 +13,7 @@
 </header>
 
 <nav>
-    <form action="insertPair.php" method="get" style="width:280px;" name="insertPair">
+    <form action="JavaScript:insertPair()" method="get" style="width:280px;" name="insertPair">
       <fieldset>
         <legend><span style="font-weight:bold;">New "Teacher-Word Pair"</span></legend>
         Teacher:<br>
@@ -47,6 +47,9 @@
     </form>
     <br>
     <input type="submit" value="Get List of All Registered Teachers" onclick="getAllTeachers()">
+    <br>
+    <br>
+    <input type="submit" value="Get List of All Registered Words" onclick="getAllWords()">
 </nav>
 
 
@@ -67,7 +70,10 @@
 function getAllTeachers() {
 	//alert("about to request page");
   httpGetAsync("http://localhost/teacherToWordProject/getAllTeachers.php",processPage);
-
+}
+function getAllWords() {
+	//alert("about to request page");
+  httpGetAsync("http://localhost/teacherToWordProject/getAllWords.php",processPage);
 }
 
 function lookupTeacher() {
@@ -84,6 +90,18 @@ function lookupWord() {
   var bro = document.lookupWord['word'].value;
   var yo = bruh.concat(bro);
   httpGetAsync(yo, processPage);
+
+}
+
+function insertPair() {
+	//alert("about to request page");
+  var bruh = "http://localhost/teacherToWordProject/insertPair.php?teacherName=";
+  var bro = document.insertPair['teacherName'].value;
+  var yo = bruh.concat(bro);
+  var word = document.insertPair['word'].value;
+  var result = yo.concat("&word=");
+  var actualResult = result.concat(word);
+  httpGetAsync(actualResult, processPage);
 
 }
 
