@@ -104,6 +104,13 @@ function insertPair() {
   httpGetAsync(actualResult, processPage);
 
 }
+function deleteOne(x, y){
+  var bruh = "http://localhost/teacherToWordProject/deleteTeacher.php?TeacherID=";
+  var yo = bruh.concat(x);
+  var result = yo.concat("&WordID=");
+  var actualResult = result.concat(y);
+  httpGetAsync(actualResult, processPage);
+}
 
 //starts a request and then runs the callback method when it is loaded
 function httpGetAsync(theUrl, callbackWhenPageLoaded)

@@ -1,6 +1,15 @@
 <html>
 <head><title>getAllTeachers</title></head>
-
+<style>
+  table{
+    border-collapse: collapse;
+  }
+  th,td {
+    text-align: left;
+    padding:8px;
+  }
+  tr:nth-child(even){background-color: #f2f2f2}
+</style>
 <body>
 
 <h1>List of All Registered Teachers</h1>

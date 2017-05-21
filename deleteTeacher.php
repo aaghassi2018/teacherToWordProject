@@ -14,7 +14,6 @@
   }
 </style>
 <body>
-
 <h1>Lookup Teacher</h1>
 <div id="result">
 <?php
@@ -26,9 +25,12 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=words", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	//print "<p>" . $_GET['teacherName'] . " is associated with: </p>";
+  $idk = $conn->query("UPDATE TeachertoWord SET count = count - 1 WHERE TeacherID = '$_GET[TeacherID]' AND WordID = '$_GET[WordID]'");
 
-	$sql = $conn->query("SELECT * FROM Teachers WHERE TeacherName = '$_GET[teacherName]'");
+	$sql = $conn->query("SELECT * FROM Teachers WHERE TeacherID = '$_GET[TeacherID]'");
 	$sqlresult = $sql -> fetch();
+
 
 
   if($sqlresult['TeacherName'] == null){
@@ -51,7 +53,7 @@ try {
 		print "<tr>";
 				print "<td>" . $wordlookupresult[1] . "</td>";
         print "<td>" . $row['count'] . "</td>";
-        print "<td id=\"bro\"> <input type=\"submit\" value=\"Delete One Entry\" onclick=\"deleteOne('$sqlresult[TeacherID]','$row[WordID]')\"> </td>";
+        print "<td id=\"bro\"> <input type=\"submit\" value=\"Delete One Entry\" onclick=\"deleteOne($sqlresult[TeacherID],$row[WordID])\"> </td>";
 		print "</tr>";
 
     }
@@ -67,11 +69,11 @@ catch(PDOException $e)
 ?>
 </body>
 <script>
-  function deleteOne(x, y){
-    var bruh = "http://localhost/teacherToWordProject/deleteTeacher.php?TeacherID=";
-    var yo = bruh.concat(x);
+  deleteOne(TeacherID, WordID){
+    var bruh = "http://localhost/teacherToWordProject/deleteTeacher.php?teacherID=";
+    var yo = bruh.concat(TeacherID);
     var result = yo.concat("&WordID=");
-    var actualResult = result.concat(y);
+    var actualResult = result.concat(WordID);
     httpGetAsync(actualResult, processPage);
   }
   function httpGetAsync(theUrl, callbackWhenPageLoaded)

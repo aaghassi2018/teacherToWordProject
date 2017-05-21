@@ -1,6 +1,15 @@
 <html>
 <head><title>lookupWord</title></head>
-
+<style>
+  table{
+    border-collapse: collapse;
+  }
+  th,td {
+    text-align: left;
+    padding:8px;
+  }
+  tr:nth-child(even){background-color: #f2f2f2}
+</style>
 <body>
 
 <h1>Lookup Word</h1>
@@ -20,7 +29,7 @@ try {
 	$wordresult = $word -> fetch();
 
 
-  $yo = "SELECT * FROM TeacherToWord WHERE wordid = $wordresult[WordID]";
+  $yo = "SELECT * FROM TeacherToWord WHERE wordid = $wordresult[WordID] ORDER BY TeacherToWord.count DESC";
 
 	print "<style> table, th, td {border: 1px solid black;} </style>";
 
